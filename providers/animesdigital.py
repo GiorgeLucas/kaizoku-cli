@@ -34,7 +34,9 @@ class AnimesDigital(BaseProvider):
             parsed_query = parse_qs(parsed_url.query)
             return  { "1080p": str(parsed_query['d'][0]) } 
 
-    def get_episodes_list(self, anime: Anime, page: int = 1, episodes_list: list = []) -> list[Episode]:
+    def get_episodes_list(self, anime: Anime, page: int = 1, episodes_list: Union[list[Episode], None] = None) -> list[Episode]:
+        if episodes_list is None:
+            episodes_list = []
         page_link = f"{anime.page_link}/" + "?odr=1" if page == 1 else f"{anime.page_link}/page/{page}/?odr=1"
         response = requests.get(page_link, headers=headers)
 
@@ -75,11 +77,3 @@ class AnimesDigital(BaseProvider):
                 resolved_homepage_url = response.url
                 animes.append(Anime(anime_title, resolved_homepage_url, self))
         return animes
-
-
-
-
-
-
-
-
