@@ -51,7 +51,7 @@ class AnimesDigital(BaseProvider):
                 episodes_list.append(Episode(episode_title, anime, episode_link))
 
         pages_links = soup.select(".content-pagination.b_flex.b_wrap > li > a")
-        if pages_links is not None:
+        if len(pages_links) > 0:
             total_pages = int(pages_links[-2].get_text())
             if page < total_pages:
                 return self.get_episodes_list(anime, page + 1, episodes_list)
