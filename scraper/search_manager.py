@@ -1,4 +1,5 @@
 from typing import Any, Union
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from core.anime import Anime, Episode
 from providers.animefire import Animefire
@@ -11,11 +12,18 @@ class SearchManager:
     @staticmethod
     def search_anime(raw_anime_name: str) -> list[Anime]:
         animes_list: list[Anime] = []
-        for provider in SearchManager.providers:
-            provider_anime_results = provider.search_anime(raw_anime_name)
-            for provider_anime in provider_anime_results:
-                animes_list.append(provider_anime)
+        with ThreadPoolExecutor() as executor:
+            futures = {
+                executor.submit(provider.search_anime, raw_anime_name): provider for provider in SearchManager.providers
+            }
+            for future in as_completed(futures):
+                try:
+                    provider_name_results = future.result()
+                    animes_list.extend(provider_name_results)
+                except Exception as e:
+                    print(f"Error searching with provider {futures[future].title}: {e}")
         return animes_list
+
 
     @staticmethod
     def get_episodes_list(anime: Anime) -> list[Episode]:
