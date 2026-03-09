@@ -49,6 +49,8 @@ class AnimesDigital(BaseProvider):
         soup = BeautifulSoup(response.text, "html.parser")
 
         episodes_links = soup.select(".item_ep.b_flex > a")
+        if len(episodes_links) == 0:
+            return []
         if episodes_links is not None:
             for episode in episodes_links:
                 episode_title = episode.select(".title_anime")[0].get_text()

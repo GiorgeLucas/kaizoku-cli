@@ -43,6 +43,8 @@ class Animefire(BaseProvider):
             raise  ExceptionSearchingNetworkError("episodes list", anime.title, self.title)
         soup = BeautifulSoup(response.text, "html.parser")
         episodes_links = soup.select(".div_video_list > a")
+        if len(episodes_links) == 0:
+            return []
         episodes_list = []
         if episodes_links is not None:
             for episode in episodes_links:

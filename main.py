@@ -15,6 +15,10 @@ def episode_not_working():
     print("This episode from this provider is not working. Try another one")
     questionary.press_any_key_to_continue().ask()
 
+def no_episodes_list():
+    print("This anime doesnt have episodes list. Try another one")
+    questionary.press_any_key_to_continue().ask()
+
 
 def get_pretty_anime_label(anime: Anime):
     label = [
@@ -54,6 +58,11 @@ def search_and_select_anime():
 
 def select_episode(anime):
     episodes_list = SearchManager.get_episodes_list(anime)
+
+    if episodes_list == []:
+        no_episodes_list()
+        return None
+
     episodes_dict = {episode.title: episode for episode in episodes_list}
 
     selected_title = questionary.select(
@@ -89,6 +98,8 @@ def main():
             continue
 
         episode = select_episode(anime)
+        if(episode is None):
+            continue
 
         clear()
         print(f"Selected Anime: {anime.title}")
