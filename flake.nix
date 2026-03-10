@@ -23,23 +23,28 @@
           src = ./.;
           format = "setuptools";
 
-          propagatedBuildInputs = with pkgs.python3Packages; [
-            beautifulsoup4
-            certifi
-            charset-normalizer
-            idna
-            m3u8
-            markdown-it-py
-            mdurl
-            prompt-toolkit
-            pygments
-            questionary
-            requests
-            soupsieve
-            typing-extensions
-            urllib3
-            wcwidth
-          ];
+          propagatedBuildInputs =
+            with pkgs.python3Packages;
+            [
+              beautifulsoup4
+              certifi
+              charset-normalizer
+              idna
+              m3u8
+              markdown-it-py
+              mdurl
+              prompt-toolkit
+              pygments
+              textual
+              requests
+              soupsieve
+              typing-extensions
+              urllib3
+              wcwidth
+            ]
+            ++ [
+              pkgs.mpv
+            ];
         };
       in
       {

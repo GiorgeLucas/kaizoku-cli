@@ -1,4 +1,7 @@
 from ui.kaizoku_app import KaizokuApp
 
-if __name__ == "__main__":
+def main():
     KaizokuApp(ansi_color=True).run()
+
+if __name__ == "__main__":
+    main()
