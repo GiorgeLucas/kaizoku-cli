@@ -16,7 +16,7 @@ import re
 
 class AnimesDigital(BaseProvider):
     title = "Animes Digital"
-    color = "fg:#ff4545 bold"
+    color = "#ff4545 bold"
     base_url = "https://animesdigital.org"
     language = Language.PT_BR
 

@@ -14,7 +14,7 @@ import re
 
 class Animefire(BaseProvider):
     title = "Animefire"
-    color = "fg:#21D3FF bold"
+    color = "#21D3FF bold"
     base_url = "https://animefire.io"
     language = Language.PT_BR
 

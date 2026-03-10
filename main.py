@@ -4,6 +4,7 @@ import questionary
 
 from core.anime import Anime
 from scraper.search_manager import SearchManager
+from ui.kaizoku_app import KaizokuApp
 from utils.system import clear
 
 def no_animes_found():
@@ -113,4 +114,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    KaizokuApp(ansi_color=True).run()
