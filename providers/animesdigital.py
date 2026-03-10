@@ -1,22 +1,21 @@
+import re
 from typing import Any, Union
-from urllib import parse
 from urllib.parse import parse_qs, urlparse
 
 from bs4 import BeautifulSoup
 import requests
 
 from core.anime import Anime, Episode
-from .exceptions import ExceptionSearchingNetworkError
 from providers.base_provider import BaseProvider
 from providers.common import Language
 
 from .common import headers
-import re
+from .exceptions import ExceptionSearchingNetworkError
 
 
 class AnimesDigital(BaseProvider):
     title = "Animes Digital"
-    color = "fg:#ff4545 bold"
+    color = "#ff4545 bold"
     base_url = "https://animesdigital.org"
     language = Language.PT_BR
 

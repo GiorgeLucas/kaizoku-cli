@@ -1,3 +1,4 @@
+import re
 from typing import Any, Union
 
 from bs4 import BeautifulSoup
@@ -10,11 +11,9 @@ from providers.exceptions import ExceptionSearchingNetworkError
 
 from .common import headers
 
-import re
-
 class Animefire(BaseProvider):
     title = "Animefire"
-    color = "fg:#21D3FF bold"
+    color = "#21D3FF bold"
     base_url = "https://animefire.io"
     language = Language.PT_BR
 

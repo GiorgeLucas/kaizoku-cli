@@ -7,5 +7,4 @@ class ExceptionSearchingNetworkError(Exception):
         self.provider_name = provider_name
 
     def __str__(self) -> str:
-        return f"Failed to get {self.resource} of {self.raw_anime_name} from {self.provider_name}"
-
+        return f"Couldn't get {self.resource} for {self.raw_anime_name} from {self.provider_name}"
