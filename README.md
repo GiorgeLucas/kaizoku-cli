@@ -12,6 +12,14 @@ A TUI (Terminal User Interface) application for searching and watching anime fro
 - Color-coded UI showing provider and language information
 - Real-time episode filtering
 
+## 🛠️ Tech Stack
+
+- **Language**: Python 3.11+
+- **TUI Framework**: [Textual](https://github.com/Textualize/textual)
+- **Web Scraping**: BeautifulSoup4, Requests
+- **Build System**: Hatchling
+- **External Player**: mpv (optional, for video playback)
+
 ## 📦 Installation
 
 ### From PyPI (once published)
